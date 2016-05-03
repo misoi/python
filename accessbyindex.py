@@ -13,3 +13,7 @@ So if you wanted "Y", you could just type
 fifth_letter = "MONTY"[4]
 
 print fifth_letter
+
+# Print the concatenation of "Spam and eggs" on line 3!
+
+print "Spam "  + "and " + "eggs"
