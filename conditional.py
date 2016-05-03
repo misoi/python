@@ -19,7 +19,7 @@ print using_control_once()
 print using_control_again()
 
 answer = "'Tis but a scratch!"
-
+#else statement added
 def black_knight():
     if answer == "'Tis but a scratch!":
         return True
@@ -31,3 +31,22 @@ def french_soldier():
         return True
     else:
         return False       # Make sure this returns False
+
+
+
+    #big if
+
+    # Make sure that the_flying_circus() returns True
+def the_flying_circus():
+    if 8==8:
+        return True # Start coding here!
+        # Don't forget to indent
+        # the code inside this block!
+    elif 8!=8:
+        print False
+
+
+    else:
+        print True
+        # Keep going here.
+        # You'll want to add the else statement, too!
