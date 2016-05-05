@@ -14,3 +14,11 @@ def one_good_turn(n):
 
 def deserves_another(n):
     return one_good_turn(n)+ 2
+# build in functions
+
+def distance_from_zero(number):
+
+    if type(number)==int or type(number)==float:
+        return abs(number)
+    else:
+        return "Nope"
