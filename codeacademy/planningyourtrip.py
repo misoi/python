@@ -40,3 +40,8 @@ def plane_ride_cost(city):
         return total
 def trip_cost(city,days):
     return hotel_cost(days)+plane_ride_cost(city)+rental_car_cost(days)
+
+#modified trip cost function to have three arguments
+
+def trip_cost(city,days,spending_money):
+    return plane_ride_cost(city)+rental_car_cost(days)+spending_money+hotel_cost(days)
