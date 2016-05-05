@@ -35,3 +35,14 @@ animals = "catdogfrog"
 cat  = animals[:3]   # The first three characters of animals
 dog  = animals[3:6]              # The fourth through sixth characters
 frog = animals[6:]
+
+#more with for
+
+start_list = [5, 3, 1, 2, 4]
+square_list = []
+
+for number in start_list:
+   square_list.append(number**2) # Your code here!
+square_list.sort()
+
+print square_list
