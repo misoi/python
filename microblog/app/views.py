@@ -26,9 +26,13 @@ def index():
                            posts=posts)
 
 from .forms import LoginForm
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST']) #tells the server that it accepts/support both GET and POST REQUESTS
 def login():
     form = LoginForm()
+    if form.validate_on_submit(): #Does all the processing work.It will collect the data and run all the validators
+        flash('login requested for OpenID="%s", remember_me=%s' %(form.openid.data, str(form.remember_me.data)))
+        return redirect('/index')
     return render_template('login.html',
                            title='Sign In',
-                           form=form)
+                           form=form,
+                        providers=app.config['OPENID_PROVIDERS'])
