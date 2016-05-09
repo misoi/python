@@ -1,3 +1,4 @@
+import os
 WTF_CSRF_ENABLED = True # activates the cross-site request forgery prevention and it is enabled by default flask-WTF
 SECRET_KEY = 'you-will-never-guess' # only needed when CSRF is enabled , used to create cryptographic token that is used to validate forms
 
@@ -8,5 +9,9 @@ OPENID_PROVIDERS = [
     {'name': 'Flickr', 'url': 'http://www.flickr.com/<username>'},
     {'name': 'MyOpenID', 'url': 'https://www.myopenid.com'}]
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 
