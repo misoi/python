@@ -14,3 +14,16 @@ def index():
                            title='Home',
                            user=user,
                            posts=posts)
+
+@app.route('/about')
+def about():
+    user = {'nickname': 'Cynthia'}  # fake user
+    posts = [  # fake array of post
+        {
+            'body': 'Some thing here'
+        }
+    ]
+    return render_template("about.html",
+                           user=user,
+                           posts=posts)
+
