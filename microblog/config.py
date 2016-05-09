@@ -11,7 +11,7 @@ OPENID_PROVIDERS = [
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db') #database path
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository') #is the folder where we will store the SQLAlchemy-migrate data files.
 
 
