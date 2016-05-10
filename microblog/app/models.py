@@ -8,16 +8,25 @@ class User(db.Model):
 
 
     @property
-    def is_authenticated(self):
+    def is_authenticated(self):#returns true for allowed users
         return True
 
     @property
-    def is_active(self):
+    def is_active(self):# should return true for active users
         return True
 
     @property
-    def is_anonymous(self):
+    def is_anonymous(self):#return true for fake users
         return False
+
+    def get_id(self):#returns unique id for the user
+        try:
+            return unicode(self.id)  # python 2
+        except NameError:
+            return str(self.id)  # python 3
+
+    def __repr__(self):
+        return '<User %r>' % (self.nickname)
 
 
     def __repr__(self):
