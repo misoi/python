@@ -1,15 +1,18 @@
-from flask import render_template, flash, redirect,session, url_for, request, g
-from app import app, db, lm, oid
+from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
+from flask.ext.login import LoginManager
+from app import app
+from app import db
+from app import lm
+from app import oid
 from .forms import LoginForm
 from .models import User
-
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'nickname': 'Miguel'}  # fake user
+    user = g.user # fake user
     posts = [  # fake array of posts
         { 
             'author': {'nickname': 'John'}, 
@@ -30,9 +33,9 @@ def index():
                            posts=posts)
 
 from .forms import LoginForm
-@app.route('/login', methods=['GET', 'POST']) #tells the server that it accepts/support both GET and POST REQUESTS
+@app.route('/login.html', methods=['GET', 'POST']) #tells the server that it accepts/support both GET and POST REQUESTS
 @oid.loginhandler # tells Flask-OpenID that this is our login view function.
-
+#
 def login():
     if g.user is not None and g.user.is_authenticated:
         return redirect(url_for('index'))
@@ -55,7 +58,7 @@ def load_user(id):
 def after_login(resp):
     if resp.email is None or resp.email == "":
         flash('Invalid login. Please try again.')
-        return redirect(url_for('login'))
+        return redirect(url_for('login.html'))
     user = User.query.filter_by(email=resp.email).first()
     if user is None:
         nickname = resp.nickname
@@ -74,3 +77,8 @@ def after_login(resp):
 @app.before_request
 def before_request():
     g.user = current_user
+    
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
