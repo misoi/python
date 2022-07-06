@@ -34,7 +34,7 @@ launchpadlib==1.10.2
 lazr.restfulclient==0.13.3
 lazr.uri==1.0.3
 lockfile==0.8
-lxml==3.3.3
+lxml==4.9.1
 mechanize==0.2.5
 netifaces==0.8
 oauth==1.0.1
